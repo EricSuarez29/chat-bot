@@ -1,0 +1,135 @@
+:root {
+    --msg-color: rgb(227, 240, 234);
+    --bg-color: linear-gradient(rgb(255, 247, 241), rgb(224, 232, 243));
+}
+
+body {
+    background-image: var(--bg-color);
+}
+
+.contenedor {
+    min-height: 100vh;
+}
+
+.container-chat {
+    position: relative;
+    min-height: 600px;
+    /* min-width: 500px; */
+    /* width: 40%; */
+    border: 2px solid cadetblue;
+    border-radius: 0.3rem;
+    box-shadow: 0 0 0.2rem black;
+}
+
+.messages-content {
+    position: absolute;
+    background-color: rgb(250, 253, 253);
+    top: 10%;
+    left: 0;
+    padding: 1rem;
+    height: 80%;
+    min-width: 100%;
+    overflow-y: auto;
+}
+
+.messages-content::-webkit-scrollbar {
+    width: 0.5rem;
+}
+
+.messages-content::-webkit-scrollbar-thumb {
+    background-color: rgba(128, 128, 128, 0.3);
+    border-radius: 0.3rem;
+}
+
+.in-message,
+.out-message {
+    position: relative;
+    display: inline-block;
+    background-color: var(--msg-color);
+    max-width: 70%;
+    padding: 1rem;
+    color: black;
+    box-shadow: 0 0 0.3rem;
+    border-radius: 0.4rem;
+}
+
+.out-message {
+    background-color: antiquewhite;
+    text-align: left;
+}
+
+.in-message::before,
+.out-message::before {
+    content: "";
+    display: block;
+    position: absolute;
+    bottom: 0;
+    transform: rotate(45deg) translateY(50%);
+    background-color: var(--msg-color);
+    width: 1rem;
+    height: 1rem;
+}
+
+.in-message::before {
+    left: 1rem;
+}
+
+.out-message::before {
+    right: 1rem;
+    background-color: antiquewhite;
+}
+
+.btn-messages {
+    position: absolute;
+    height: 10%;
+    bottom: 0rem;
+    display: flex;
+    align-items: center;
+    background-color: azure;
+}
+
+.btn-send {
+    border-radius: 1em;
+    border: 2px solid cadetblue;
+    background-color: azure;
+    color: cadetblue;
+    transition: background 0.4s;
+}
+
+.btn-send:hover {
+    background-color: cadetblue;
+    color: white;
+}
+
+.in-text {
+    border-radius: 0.3em;
+}
+
+.cabecera {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    top: 0;
+    z-index: 10;
+    height: 10%;
+    width: 100%;
+    background-color: cadetblue;
+    padding: 0 1rem;
+}
+
+.cabecera img {
+    width: 50px;
+    border-radius: 50%;
+}
+
+.cabecera h2 {
+    color: rgb(243, 243, 222);
+    margin-left: 0.5rem;
+    display: inline;
+}
+
+.title {
+    position: absolute;
+    top: 10%;
+    color: #444;
+}
