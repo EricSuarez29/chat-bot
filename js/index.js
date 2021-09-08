@@ -1,5 +1,6 @@
 const d = document,
-    $chat = d.getElementById(`chat`);
+    $chat = d.getElementById(`chat`),
+    $contentChat = d.querySelector(`.messages-content`);
 
 const message = (message, type) => {
     $content =  $chat.querySelector(`.messages-content`);
@@ -24,7 +25,7 @@ const message = (message, type) => {
     $content.innerHTML = contenido + respuesta;
 }
 
-const postMessage = (text) =>{
+const postMessage = async (text) =>{
     let options = {
         method: `POST`,
         headers: {
@@ -40,6 +41,10 @@ const postMessage = (text) =>{
     .then(json => {
         let content = json.answers[0].answer;
         message(content, `OUT`);
+        let contenido = d.getElementById("txt-content");
+        contenido.value = "";
+    }).then(()=>{
+        $contentChat.scrollTop = $contentChat.scrollHeight - 480;
     })
     .catch(err => console.log(err));
 }
@@ -54,12 +59,11 @@ d.addEventListener(`click`, (e)=>{
     }
 });
 
-d.addEventListener(`keyup`, (e)=> {
+d.addEventListener(`keyup`,async (e)=> {
     let key = e.key;
     if(key === `Enter` && d.getElementById("txt-content").value !== ""){
         let contenido = d.getElementById("txt-content");
         message(contenido.value, `IN`)
         postMessage(contenido.value);
-        contenido.value = "";
     }
-})
+});
